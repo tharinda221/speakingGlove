@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
-public class text_to_speech_main extends Activity {
-    TextToSpeech t1;
+public class TextToVoice extends Activity {
+    android.speech.tts.TextToSpeech t1;
     EditText ed1;
     Button b1;
 
@@ -24,10 +24,10 @@ public class text_to_speech_main extends Activity {
         ed1=(EditText)findViewById(com.speakingglove.speakinggolve.R.id.editText);
         b1=(Button)findViewById(com.speakingglove.speakinggolve.R.id.button);
 
-        t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+        t1=new android.speech.tts.TextToSpeech(getApplicationContext(), new android.speech.tts.TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
-                if(status != TextToSpeech.ERROR) {
+                if(status != android.speech.tts.TextToSpeech.ERROR) {
                     t1.setLanguage(Locale.UK);
                 }
             }
@@ -38,7 +38,7 @@ public class text_to_speech_main extends Activity {
             public void onClick(View v) {
                 String toSpeak = ed1.getText().toString();
                 Toast.makeText(getApplicationContext(), toSpeak, Toast.LENGTH_SHORT).show();
-                t1.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null);
+                t1.speak(toSpeak, android.speech.tts.TextToSpeech.QUEUE_FLUSH, null);
             }
         });
     }
