@@ -16,7 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SpeechRecognizer"></activity>
+        <activity android:name=".SpeechRecognizer"/>
+        <activity
+            android:name=".configIP"
+            android:label="@string/title_activity_config_ip" >
+        </activity>
     </application>
 
 </manifest>
