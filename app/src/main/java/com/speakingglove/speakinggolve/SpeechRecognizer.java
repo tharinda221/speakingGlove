@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.Locale;
 public class SpeechRecognizer extends Activity {
 
     protected ImageButton imgBtn;
+    protected ImageView imgView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,8 @@ public class SpeechRecognizer extends Activity {
         setContentView(R.layout.activity_speech_recognizer);
 
         imgBtn = (ImageButton) findViewById(R.id.imageButton);
+        imgView = (ImageView) findViewById(R.id.imageView);
+
         imgBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +66,24 @@ public class SpeechRecognizer extends Activity {
 
                     ArrayList<String> result = data
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    Toast.makeText(SpeechRecognizer.this, result.get(0), Toast.LENGTH_SHORT).show();
+                    String res = result.get(0);
+                    Toast.makeText(SpeechRecognizer.this, res, Toast.LENGTH_SHORT).show();
+
+                    if (Constants.wordImgMap.containsKey(res)) {
+                        if (res.contains("hello") || res.contains("hi")) {
+                            imgView.setBackgroundResource(R.drawable.hi);
+                        } else if (res.contains("hungry")) {
+                            imgView.setBackgroundResource(R.drawable.hungry);
+                        } else if (res.contains("help")) {
+                            imgView.setBackgroundResource(R.drawable.help);
+                        } else if (res.contains("fine") || res.contains("ok")) {
+                            imgView.setBackgroundResource(R.drawable.fine);
+                        }
+                        else {
+                            imgView.setBackgroundResource(R.drawable.noword);
+                        }
+                    }
+
                 }
                 break;
             }

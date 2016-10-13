@@ -1,6 +1,9 @@
 package com.speakingglove.speakinggolve;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -28,7 +31,26 @@ public class configIP extends Activity {
                 {
                     public void onClick(View view)
                     {
-                        Log.v("EditText", mEdit.getText().toString());
+                        if (mEdit.getText() != null) {
+                            Intent intent = new Intent(configIP.this, SpeechRecognizer.class);
+                            startActivity(intent);
+
+                        } else {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(configIP.this);
+                            builder.setCancelable(false);
+                            builder.setTitle("Something is Not Correct");
+                            builder.setMessage("Please add the IP address");
+                            builder.setPositiveButton("OK!!!", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int id) {
+                                    //
+                                    dialog.dismiss();
+                                }
+                            });
+
+                            // Create the AlertDialog object and return it
+                            builder.create().show();
+                        }
                     }
                 });
     }
