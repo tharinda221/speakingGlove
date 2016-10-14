@@ -56,17 +56,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         return super.onOptionsItemSelected(item);
     }
 
-    public static String getSignCommand(String input) {
-        String [] words = {"hello", "help me", "i'm fine", " i'm hungry"};
-        if(input.equals("1000")) {
-            return words[0];
-        } else if(input.equals("11111")) {
-            return words[1];
-        } else if(input.equals("01111")) {
-            return words[2];
-        } else {
-            return words[3];
-        }
-    }
+
 
 }

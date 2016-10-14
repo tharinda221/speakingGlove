@@ -15,8 +15,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageButton"
         android:background="@drawable/ico_mic"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -25,4 +24,13 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/imageButton" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/speech"
+        android:layout_alignEnd="@+id/imageView"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/speech"
+        android:layout_below="@+id/imageView" />
 </RelativeLayout>
